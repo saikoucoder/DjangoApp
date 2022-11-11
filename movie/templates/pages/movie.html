@@ -1,0 +1,60 @@
+{% extends "pages/base.html" %} 
+{% block title %}Movie{% endblock %} 
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+      color: orange;
+    }
+    .item{
+        color: white;
+        background-color: #1d2731;
+        border: 1rem solid rgb(238 237 237 / 13%);
+    }
+    a{
+        text-decoration: none;
+    }
+</style>
+<div class="px-5">
+    <nav aria-label="breadcrumb" style="margin-top: 10px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Anime</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            {{movie.name}}
+          </li>
+        </ol>
+    </nav>
+<div class="card d-flex text-white px-2 py-3" style="width: 100%; background-color: #1d2731;">
+    <div class="d-flex align-items-center">
+        <div class="flex-shrink-0">
+            <div class="m-2">
+                <img
+                  src="../{{movie.image}}"
+                  style="height: 400px; width: 300px; border-radius: 0.5rem"
+                  alt="anime"
+                />
+            </div>
+        </div>
+        <div class="flex-grow-1 ms-3">
+                <h2 class="card-title">{{movie.name}}</h2>
+                <p class="card-text">{{movie.plot}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item item">Đạo diễn: {{movie.director}}</li>
+                    <li class="list-group-item item">Thể loại: {{movie.category}}</li>
+                    <li class="list-group-item item">Đánh giá:
+                        {% for i in n %}
+                        <span class="fa fa-star checked"></span>
+                        {% endfor %}
+                        {% for i in m %}
+                        <span class="fa fa-star"></span>
+                        {% endfor %}
+                    </li>
+                    <li class="list-group-item item">Thời lượng: {{movie.movie_length}} phút</li>
+                    <li class="list-group-item item">Khởi chiếu: {{movie.release_year|date:"d-m-Y"}}</li>
+                </ul>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

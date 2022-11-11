@@ -2,13 +2,13 @@
 {% block title %}Home{% endblock %} 
 {% block content %}
 <h1 align="center">Best Movie</h1>
-<div class="d-flex p-2">
+<div class="d-flex px-5">
     {% for movie in Movies %}
     <div class="card m-2" style="width: 15rem">
-      <img src="{{movie.image}}" class="card-img-top" alt="..." style="height: 300px;"/>
+      <img src="{{movie.image}}" class="card-img-top" alt="anime" style="height: 280px;"/>
       <div class="card-body">
-        <h5 class="card-title">{{movie.name}}</h5>
-        <a href="#" class="btn btn-outline-danger">View</a>
+        <h5 class="card-title" style="height: 50px;">{{movie.name}}</h5>
+        <a href="/movie/{{movie.id}}" class="btn btn-outline-danger" style="width: 100%;">View</a>
       </div>
     </div>
     {% endfor %}
