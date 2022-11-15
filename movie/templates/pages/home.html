@@ -1,7 +1,9 @@
 {% extends "pages/base.html" %} 
 {% block title %}Home{% endblock %} 
 {% block content %}
-<h1 align="center" style="color: white;">Best Movie</h1>
+{%load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+<h1 class="title">Popular Movies</h1>
 <div class="d-flex px-5">
     {% for movie in Movies %}
     <div class="card m-2" style="width: 13rem">

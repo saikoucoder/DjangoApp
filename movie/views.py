@@ -23,3 +23,7 @@ def search(request):
 def getMovieById(request, id):
     movie = Movie.objects.get(id=id)
     return render(request, "pages/movie.html", {'movie': movie, 'n': range(movie.rating), 'm': range(5-movie.rating)})
+
+def watchMovie(request, id):
+    movie = Movie.objects.get(id=id)
+    return  render(request, "pages/watchmovie.html", {'movie': movie,})

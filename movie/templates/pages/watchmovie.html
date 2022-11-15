@@ -20,7 +20,9 @@
     style="width: 100%; background-color: #1d2731"
   >
     <div class="d-flex align-items-center">
-      <div class="flex-shrink-0">
+        <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+        </iframe>
+      <!-- <div class="flex-shrink-0">
         <div class="m-2">
           <img
             src="../{{movie.image}}"
@@ -31,7 +33,6 @@
       </div>
       <div class="flex-grow-1 ms-3">
         <h2 class="card-title">{{movie.name}}</h2>
-        <!-- <p class="card-text">{{movie.plot}}</p> -->
         <ul class="list-group list-group-flush">
           <li class="list-group-item item">Đạo diễn: {{movie.director}}</li>
           <li class="list-group-item item">Thể loại: {{movie.category}}</li>
@@ -49,17 +50,16 @@
             Khởi chiếu: {{movie.release_year|date:"d-m-Y"}}
           </li>
         </ul>
-        <a
-          href="/watchmovie/{{movie.id}}"
+        <button
           type="button"
           class="btn btn-outline-success"
           style="margin: 5px 10px; width: 100px"
         >
           Watch
-        </a>
-      </div>
+        </button>
+      </div> -->
     </div>
-    <div class="card-body">
+    <!-- <div class="card-body">
       <h4
         class="card-title"
         style="
@@ -70,7 +70,7 @@
         Nội dung
       </h4>
       <p class="card-text">{{movie.plot}}</p>
-    </div>
+    </div> -->
   </div>
 </div>
 {% endblock %}
