@@ -1,16 +1,29 @@
-{% extends "pages/base.html" %} 
-{% block title %}Search{% endblock %} 
-{% block content %}
-<h3 align="center" style="color: white;">Kết quả tìm kiếm: {{search}}</h3>
-<div class="d-flex px-5">
-    {% for movie in Movies %}
-    <div class="card m-2" style="width: 13rem">
-      <img src="{{movie.image}}" class="card-img-top" alt="anime" style="height: 240px;"/>
-      <div class="card-body">
-        <h6 class="card-title" style="height: 40px;">{{movie.name}}</h6>
-        <a href="/movie/{{movie.id}}" class="btn btn-outline-danger" style="width: 100%;">View</a>
-      </div>
+{% extends "pages/base.html" %} {% block title %}{{type}} Movies{% endblock %} 
+{% block content %} {%load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}" />
+<h1 class="title">Kết quả tìm kiếm: {{search}}</h1>
+<div class="px-5" style="display: flex; flex-direction: row; flex-wrap: wrap">
+  {% for movie in Movies %}
+  <div
+    class="card m-2"
+    style="width: 13.5rem; background-color: #111111; color: white"
+  >
+    <img
+      src="{{movie.image}}"
+      class="card-img-top"
+      alt="anime"
+      style="height: 240px"
+    />
+    <div class="card-body">
+      <h6 class="card-title" style="height: 40px; font-size: 15px;">{{movie.name}}</h6>
+      <a
+        href="/movie/{{movie.id}}"
+        class="btn btn-outline-danger"
+        style="width: 100%"
+        >View</a
+      >
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 {% endblock %}

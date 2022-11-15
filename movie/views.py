@@ -26,4 +26,13 @@ def getMovieById(request, id):
 
 def watchMovie(request, id):
     movie = Movie.objects.get(id=id)
-    return  render(request, "pages/watchmovie.html", {'movie': movie,})
+    data = Movie.objects.all()
+    return  render(request, "pages/watchmovie.html", {'movie': movie, 'Movies': data})
+
+def getType(request):
+    if request.method == 'GET':
+        type = request.GET.get('type')
+        Data = Movie.objects.filter(category__name=type)
+        return render(request, "pages/typemovie.html", {'Movies': Data, 'type': type})
+    else:
+        return render(request, "pages/home.html", {})

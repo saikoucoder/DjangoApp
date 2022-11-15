@@ -1,7 +1,7 @@
-{% extends "pages/base.html" %} {% block title %}Home{% endblock %} 
+{% extends "pages/base.html" %} {% block title %}{{type}} Movies{% endblock %} 
 {% block content %} {%load static %}
 <link rel="stylesheet" href="{% static 'home.css' %}" />
-<h1 class="title">Popular Movies</h1>
+<h1 class="title">{{type}} Movies</h1>
 <div class="px-5" style="display: flex; flex-direction: row; flex-wrap: wrap">
   {% for movie in Movies %}
   <div
