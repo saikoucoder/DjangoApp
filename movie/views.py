@@ -26,7 +26,7 @@ def getMovieById(request, id):
 
 def watchMovie(request, id):
     movie = Movie.objects.get(id=id)
-    data = Movie.objects.all()
+    data = Movie.objects.all().order_by("-rating").values()
     return  render(request, "pages/watchmovie.html", {'movie': movie, 'Movies': data})
 
 def getType(request):

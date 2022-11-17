@@ -17,7 +17,7 @@
     <div class="card-body">
       <h6 class="card-title" style="height: 40px; font-size: 15px;">{{movie.name}}</h6>
       <a
-        href="/movie/{{movie.id}}"
+        href="{% url 'movie' movie.id %}"
         class="btn btn-outline-danger"
         style="width: 100%"
         >View</a
