@@ -47,15 +47,15 @@
                   Anime
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="type?type=Shounen">Shounen</a></li>
-                  <li><a class="dropdown-item" href="type?type=Romance">Romance</a></li>
-                  <li><a class="dropdown-item" href="type?type=Trinh Thám">Trinh Thám</a></li>
-                  <li><a class="dropdown-item" href="type?type=Comedy">Comedy</a></li>
-                  <li><a class="dropdown-item" href="type?type=Horror">Horror</a></li>
+                  <li><a class="dropdown-item" href="{% url 'type' %}?type=Shounen">Shounen</a></li>
+                  <li><a class="dropdown-item" href="{% url 'type' %}?type=Romance">Romance</a></li>
+                  <li><a class="dropdown-item" href="{% url 'type' %}?type=Trinh Thám">Trinh Thám</a></li>
+                  <li><a class="dropdown-item" href="{% url 'type' %}?type=Comedy">Comedy</a></li>
+                  <li><a class="dropdown-item" href="{% url 'type' %}?type=Horror">Horror</a></li>
                 </ul>
               </li>
             </ul>
-            <form class="d-flex mt-3" role="search" action="search" method="get">
+            <form class="d-flex mt-3" role="search" action="{% url 'search' %}" method="get">
               <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-success" type="submit">Search</button>
             </form>
