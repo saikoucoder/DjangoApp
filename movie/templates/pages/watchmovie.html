@@ -1,10 +1,8 @@
-{% extends "pages/base.html" %} 
-{% block title %}Movie{% endblock %} 
+{% extends "pages/base.html" %}
+{% block title %}Movie{% endblock %}
 {% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
 {%load static %}
 <link rel="stylesheet" href="{% static 'watchmovie.css' %}" />
 <div class="px-5">
@@ -15,31 +13,31 @@
       <li class="breadcrumb-item active" aria-current="page">{{movie.name}}</li>
     </ol>
   </nav>
-  <div
-    class="card d-flex text-white px-3 py-3"
-    style="width: 100%; background-color: #1d2731"
-  >
-    <div class="d-flex">
-        <div class="" style="width: 820px;">
-          <iframe style="border-radius: 0.4rem;" width="800" height="500"
-          src="{{movie.video_url}}"
-          allowfullscreen>
-          </iframe>
-          <div class="card-body">
-            <h4
-              class="card-title"
-              style="
+  <div class="card d-flex text-white px-3 py-3" style="width: 100%; background-color: #1d2731">
+    <div class="d-flex justify-content-around">
+      <div class="" style="width: 978px; margin-left: 20px">
+        <video id="my-video" class="video-js" controls preload="auto" style="border-radius: 0.4rem;" width="100%"
+          height="550" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+          <source src="{{movie.video_url}}" type="video/mp4" />
+          <source src="{{movie.video_url}}" type="video/webm" />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+          </p>
+        </video>
+        <div class="card-body">
+          <h4 class="card-title" style="
                 border-bottom: 0.1rem solid rgb(238 237 237 / 13%);
                 padding-bottom: 5px;
-              "
-            >
-              Nội dung
-            </h4>
-            <p class="card-text">{{movie.plot}}</p>
-          </div>
+              ">
+            Nội dung
+          </h4>
+          <p class="card-text">{{movie.plot}}</p>
+        </div>
 
-          <div class="card">
-            <!-- <div class="card-body">
+        <div class="card">
+          <!-- <div class="card-body">
               <div class="d-flex flex-start align-items-center">
                 <img class="rounded-circle shadow-1-strong me-3"
                   src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
@@ -73,49 +71,50 @@
                 </a>
               </div>
             </div> -->
-            <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-              <div class="d-flex flex-start w-100">
-                <img class="rounded-circle shadow-1-strong me-3"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40"
-                  height="40" />
-                <div class="form-outline w-100">
-                  <textarea class="form-control" id="textAreaExample" rows="4"
-                    style="background: #fff;"></textarea>
-                </div>
-              </div>
-              <div class="float-end mt-2 pt-1">
-                <button type="button" class="btn btn-primary btn-sm">Comment</button>
+          <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+            <div class="d-flex flex-start w-100">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40" height="40" />
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
               </div>
             </div>
+            <div class="float-end mt-2 pt-1">
+              <button type="button" class="btn btn-primary btn-sm">Comment</button>
+            </div>
           </div>
-
         </div>
 
-        <div class="card" style="width: 300px; margin-left: 40px; height: fit-content;">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item list">
-              <h5 class="card-title" style="color: white;">Anime nổi bật</h5>
-            </li>
-            {% for movie in Movies %}
-              <li class="list-group-item list">
-                <div class="card" style="max-width: 540px;">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <img src="../{{movie.image}}" class="img-fluid rounded-start" alt="..." style="width: 85px; height: 100%;">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title" style="font-size: 15px;">{{movie.name}}</h5>
-                        {{movie.rating}}
-                        <span class="fa fa-star checked"></span>
-                      </div>
-                    </div>
+      </div>
+
+      <div class="card" style="width: 300px; margin-left: 40px; height: fit-content;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list">
+            <h5 class="card-title" style="color: white;">Anime nổi bật</h5>
+          </li>
+          {% for movie in Movies %}
+          <li class="list-group-item list">
+            <div class="card" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="../{{movie.image}}" class="img-fluid rounded-start" alt="..."
+                    style="width: 85px; height: 100%;">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <a class="card-title" href="{% url 'movie' movie.id %}" 
+                    style="font-size: 15px; text-decoration: none; color: #333; font-weight: 500;
+                      line-height: 1.2; display: block;">{{movie.name}}</a>
+                    {{movie.rating}}
+                    <span class="fa fa-star checked"></span>
                   </div>
                 </div>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </div>

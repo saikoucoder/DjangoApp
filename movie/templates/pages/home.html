@@ -6,13 +6,13 @@
   {% for movie in Movies %}
   <div
     class="card m-2"
-    style="width: 13.5rem; background-color: #111111; color: white"
+    style="width: 13.5rem; background-color: #111111; color: white;"
   >
     <img
       src="{{movie.image}}"
       class="card-img-top"
       alt="anime"
-      style="height: 240px"
+      style="height: 280px; object-fit: cover;"
     />
     <div class="card-body">
       <h6 class="card-title" style="height: 40px; font-size: 15px;">{{movie.name}}</h6>
