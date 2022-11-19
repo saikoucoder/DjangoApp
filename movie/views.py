@@ -1,8 +1,9 @@
 from urllib import response
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie
 from django.db.models import Q
+from .forms import RegistrationForm
 # Create your views here.
 
 
@@ -36,3 +37,12 @@ def getType(request):
         return render(request, "pages/typemovie.html", {'Movies': Data, 'type': type})
     else:
         return render(request, "pages/home.html", {})
+
+def register(request):
+    form = RegistrationForm()
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    return render(request, 'pages/register.html', {'form': form})
