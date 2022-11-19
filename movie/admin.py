@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Director, Movie
+from .models import Category, Director, Movie, Comment
 # Register your models here.
 
 
@@ -14,11 +14,14 @@ class DirectorAdmin(admin.ModelAdmin):
     search_fields = ['name', 'nationality']
     list_filter = ['create_date']
 
+class CommentInline(admin.StackedInline):
+    model = Comment
 
 class MovieAdmin(admin.ModelAdmin):
     list_display = ['name','director','category', 'create_date']
     search_fields = ['name','category']
     list_filter = ['create_date']
+    inlines = [CommentInline]
 
 
 admin.site.register(Category, CategoryAdmin)

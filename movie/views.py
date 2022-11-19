@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie
 from django.db.models import Q
 from .forms import RegistrationForm
+from .forms import CommentForm
 # Create your views here.
 
 
@@ -25,10 +26,18 @@ def getMovieById(request, id):
     movie = Movie.objects.get(id=id)
     return render(request, "pages/movie.html", {'movie': movie, 'n': range(movie.rating), 'm': range(5-movie.rating)})
 
+
 def watchMovie(request, id):
     movie = Movie.objects.get(id=id)
     data = Movie.objects.all().order_by("-rating").values()
-    return  render(request, "pages/watchmovie.html", {'movie': movie, 'Movies': data})
+    form = CommentForm()
+    if request.method == 'POST':
+        form = CommentForm(request.POST, author=request.user, movie=movie)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path)
+    return render(request, "pages/watchmovie.html", {'movie': movie, 'Movies': data, 'form': form})
+
 
 def getType(request):
     if request.method == 'GET':
@@ -37,6 +46,7 @@ def getType(request):
         return render(request, "pages/typemovie.html", {'Movies': Data, 'type': type})
     else:
         return render(request, "pages/home.html", {})
+
 
 def register(request):
     form = RegistrationForm()
