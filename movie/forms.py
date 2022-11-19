@@ -36,7 +36,7 @@ class RegistrationForm(forms.Form):
 
 
 class CommentForm(forms.ModelForm):
-    body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': '4'}))
+    body = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': '3', 'placeholder': 'Viết bình luận...'}))
     def __init__(self, *args, **kwargs):
         self.author = kwargs.pop('author', None)
         self.movie = kwargs.pop('movie', None)

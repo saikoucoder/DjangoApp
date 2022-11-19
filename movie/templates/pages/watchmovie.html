@@ -56,6 +56,33 @@
         </div>
 
         <div class="card p-3" style="color: black">
+          <form action="{% url 'watchmovie' movie.id %}" method="POST">
+            {% csrf_token %}
+            <div
+              class="card-footer py-3 border-0"
+              style="background-color: #f8f9fa"
+            >
+              <div class="d-flex flex-start w-100">
+                <img
+                  class="rounded-circle shadow-1-strong me-3"
+                  src="https://www.nicepng.com/png/detail/914-9144016_avatar-pictures-anime-male-hair-reference.png"
+                  alt="avatar"
+                  width="40"
+                  height="40"
+                />
+                <div class="form-outline w-100">{{form.body}}</div>
+              </div>
+              <div class="float-end my-1 pt-1">
+                <button
+                  type="submit"
+                  value="body"
+                  class="btn btn-primary btn-sm"
+                >
+                  Bình luận
+                </button>
+              </div>
+            </div>
+          </form>
           {% for comment in movie.comments.all %}
           <div class="card-footer py-3 border-0">
             <div class="d-flex flex-start w-100">
@@ -81,33 +108,6 @@
             </div>
           </div>
           {% endfor %}
-          <form action="{% url 'watchmovie' movie.id %}" method="POST">
-            {% csrf_token %}
-            <div
-              class="card-footer py-3 border-0"
-              style="background-color: #f8f9fa"
-            >
-              <div class="d-flex flex-start w-100">
-                <img
-                  class="rounded-circle shadow-1-strong me-3"
-                  src="https://www.nicepng.com/png/detail/914-9144016_avatar-pictures-anime-male-hair-reference.png"
-                  alt="avatar"
-                  width="40"
-                  height="40"
-                />
-                <div class="form-outline w-100">{{form.body}}</div>
-              </div>
-              <div class="float-end mt-2 pt-1">
-                <button
-                  type="submit"
-                  value="body"
-                  class="btn btn-primary btn-sm"
-                >
-                  Comment
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
 
