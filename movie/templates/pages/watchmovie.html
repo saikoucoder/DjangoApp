@@ -56,6 +56,7 @@
         </div>
 
         <div class="card p-3" style="color: black">
+          {% if user.username %}
           <form action="{% url 'watchmovie' movie.id %}" method="POST">
             {% csrf_token %}
             <div
@@ -83,6 +84,28 @@
               </div>
             </div>
           </form>
+          {% else %}
+          <div class="d-flex flex-start w-100">
+           <h3 style="center"> Đăng nhập để bình luận </h3>
+          </div>
+          <div 
+            class="card-footer py border-0"
+            style="background-color: #f8f9fa"
+          >
+          <div class="float-end my-1 pt-1">
+            <a href="{%url 'login'%}"
+              type="submit"
+              value="body"
+              class="btn btn-primary btn-sm"
+            >
+              Bình luận
+            </a>
+          </div>
+
+          </div>
+
+          {% endif%}
+          
           {% for comment in movie.comments.all %}
           <div class="card-footer py-3 border-0">
             <div class="d-flex flex-start w-100">
@@ -95,7 +118,7 @@
               />
               <div class="form-outline w-100">
                 <div style="font-size: 17px; font-weight: 500">
-                  {{user.username}}
+                  {{comment.author}}
                 </div>
                 <div style="font-size: 12px">{{comment.date}}</div>
               </div>
