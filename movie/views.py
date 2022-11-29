@@ -29,7 +29,12 @@ def getMovieById(request, id):
 
 def watchMovie(request, id):
     movie = Movie.objects.get(id=id)
-    data = Movie.objects.all().order_by("-rating").values()
+    data = []
+    count = 0
+    for m in Movie.objects.all().order_by("-rating").values():
+        if count < 5:
+            data.append(m)
+            count += 1
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm(request.POST, author=request.user, movie=movie)
