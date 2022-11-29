@@ -85,25 +85,34 @@
             </div>
           </form>
           {% else %}
-          <div class="d-flex flex-start w-100">
-           <h3 style="center"> Đăng nhập để bình luận </h3>
-          </div>
-          <div 
-            class="card-footer py border-0"
-            style="background-color: #f8f9fa"
-          >
-          <div class="float-end my-1 pt-1">
-            <a href="{%url 'login'%}"
-              type="submit"
-              value="body"
-              class="btn btn-primary btn-sm"
+          <form action="{% url 'watchmovie' movie.id %}" method="POST">
+            {% csrf_token %}
+            <div
+              class="card-footer py-3 border-0"
+              style="background-color: #f8f9fa"
             >
-              Bình luận
-            </a>
-          </div>
-
-          </div>
-
+              <div class="d-flex flex-start w-100">
+                <img
+                  class="rounded-circle shadow-1-strong me-3"
+                  src="https://www.nicepng.com/png/detail/914-9144016_avatar-pictures-anime-male-hair-reference.png"
+                  alt="avatar"
+                  width="40"
+                  height="40"
+                />
+                <div class="form-outline w-100">{{form.body}}</div>
+              </div>
+              <div class="float-end my-1 pt-1">
+                <a href="{%url 'login'%}"
+                  type="submit"
+                  value="body"
+                  class="btn btn-primary btn-sm"
+                >
+                  Bình luận
+                </a>
+              </div>
+            </div>
+          </form>
+        
           {% endif%}
           
           {% for comment in movie.comments.all %}
