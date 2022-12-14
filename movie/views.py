@@ -9,7 +9,13 @@ from .forms import CommentForm
 
 
 def index(request):
-    Data = {"Movies": Movie.objects.all()}
+    NewMovies = []
+    count = 0
+    for m in Movie.objects.all().order_by("-release_year").values():
+        if count < 5:
+            NewMovies.append(m)
+            count += 1
+    Data = {"Movies": Movie.objects.all(), "NewMovies": NewMovies}
     return render(request, "pages/home.html", Data)
 
 
