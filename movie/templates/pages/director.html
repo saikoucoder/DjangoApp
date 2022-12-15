@@ -1,0 +1,42 @@
+{% extends "pages/base.html" %} 
+{% block title %}Director{% endblock %} 
+{% block content %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+{%load static %}
+<link rel="stylesheet" href="{% static 'movie.css' %}" />
+<div class="px-5">
+  <nav aria-label="breadcrumb" style="margin-top: 10px">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Director</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{movie.name}}</li>
+    </ol>
+  </nav>
+  <div
+    class="card d-flex text-white px-2 py-3"
+    style="width: 100%; background-color: #1d2731"
+  >
+    <div class="d-flex align-items-center">
+      <div class="flex-shrink-0">
+        <div class="m-2">
+          <img
+            src="../{{director.image}}"
+            style="height: 420px; width: 300px; border-radius: 0.5rem; object-fit: cover;"
+            alt="anime"
+          />
+        </div>
+      </div>
+      <div class="flex-grow-1 ms-3">
+        <h2 class="card-title">{{director.name}}</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item item">Quốc gia: {{director.nationality}}</li>
+          <li class="list-group-item item">Ngày sinh: {{director.birthday|date:"d-m-Y"}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

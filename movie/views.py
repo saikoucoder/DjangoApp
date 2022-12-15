@@ -1,7 +1,7 @@
 from urllib import response
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Movie
+from .models import Movie, Director
 from django.db.models import Q
 from .forms import RegistrationForm
 from .forms import CommentForm
@@ -48,6 +48,11 @@ def watchMovie(request, id):
             form.save()
             return HttpResponseRedirect(request.path)
     return render(request, "pages/watchmovie.html", {'movie': movie, 'Movies': data, 'form': form})
+
+def getDirectorById(request, id):
+    director = Director.objects.get(id=id)
+    return render(request, "pages/director.html", {'director': director})
+
 
 
 def getType(request):
