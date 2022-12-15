@@ -45,7 +45,7 @@
             padding-bottom: 5px;
           "
         >
-          Nội dung
+          Các phim đã thực hiện
         </h4>
         <div class="px-5" style="display: flex; flex-direction: row; flex-wrap: wrap">
             {% for movie in movies %}
@@ -54,7 +54,7 @@
               style="width: 13.5rem; background-color: #111111; color: white;"
             >
                 <img
-                  src="{{movie.image}}"
+                  src="../{{movie.image}}"
                   class="card-img-top"
                   alt="anime"
                   style="height: 280px; object-fit: cover;"
