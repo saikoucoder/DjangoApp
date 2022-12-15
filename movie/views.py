@@ -51,7 +51,8 @@ def watchMovie(request, id):
 
 def getDirectorById(request, id):
     director = Director.objects.get(id=id)
-    return render(request, "pages/director.html", {'director': director})
+    movies = Movie.objects.filter(director__name=director.name)
+    return render(request, "pages/director.html", {'director': director, 'movies': movies})
 
 
 
